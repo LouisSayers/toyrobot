@@ -81,4 +81,86 @@ describe ToyRobot::Position do
       include_examples 'reports correct location', described_class::WEST, 'WEST'
     end
   end
+
+  describe '#move_forward' do
+    let(:position) { described_class.new(x, y, heading) }
+
+    subject { position.move_forward }
+
+    shared_examples 'creates new position' do
+      it 'does not change the heading' do
+        new_position = subject
+        expect(new_position.heading).to eq position.heading
+      end
+
+      it 'creates a new position' do
+        new_position = subject
+        expect(new_position).not_to eq position
+      end
+    end
+
+    context 'facing NORTH' do
+      let(:heading) { ToyRobot::Position::NORTH }
+
+      include_examples 'creates new position'
+
+      it 'creates a new position with y increased by 1' do
+        new_position = subject
+        expect(new_position.y).to eq position.y + 1
+      end
+
+      it 'does not change x' do
+        new_position = subject
+        expect(new_position.x).to eq position.x
+      end
+    end
+
+    context 'facing EAST' do
+      let(:heading) { ToyRobot::Position::EAST }
+
+      include_examples 'creates new position'
+
+      it 'creates a new position with x increased by 1' do
+        new_position = subject
+        expect(new_position.x).to eq position.x + 1
+      end
+
+      it 'does not change y' do
+        new_position = subject
+        expect(new_position.y).to eq position.y
+      end
+    end
+
+    context 'facing SOUTH' do
+      let(:heading) { ToyRobot::Position::SOUTH }
+
+      include_examples 'creates new position'
+
+      it 'creates a new position with y decreased by 1' do
+        new_position = subject
+        expect(new_position.y).to eq position.y - 1
+      end
+
+      it 'does not change x' do
+        new_position = subject
+        expect(new_position.x).to eq position.x
+      end
+    end
+
+    context 'facing WEST' do
+      let(:heading) { ToyRobot::Position::WEST }
+
+      include_examples 'creates new position'
+
+      it 'creates a new position with x decreased by 1' do
+        new_position = subject
+        expect(new_position.x).to eq position.x - 1
+      end
+
+      it 'does not change y' do
+        new_position = subject
+        expect(new_position.y).to eq position.y
+      end
+    end
+  end
 end

@@ -22,7 +22,14 @@ module ToyRobot
     end
 
     def move_forward
-      #TODO: implement me
+      x_change, y_change = {
+        NORTH => [0, 1],
+        EAST => [1, 0],
+        SOUTH => [0, -1],
+        WEST => [-1, 0],
+      }[heading]
+
+      self.class.new(x + x_change, y + y_change, heading)
     end
 
     def to_s
