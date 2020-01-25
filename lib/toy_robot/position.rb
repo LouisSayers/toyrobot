@@ -21,6 +21,10 @@ module ToyRobot
       self.class.new(x, y, heading_change(1))
     end
 
+    def move_forward
+      #TODO: implement me
+    end
+
     def to_s
       [x, y, heading_name].join(',')
     end

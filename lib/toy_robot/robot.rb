@@ -2,7 +2,8 @@ module ToyRobot
   class Robot
     attr_reader :position
 
-    def initialize(position)
+    def initialize(table, position)
+      @table = table
       @position = position
     end
 
@@ -12,6 +13,13 @@ module ToyRobot
 
     def turn_right
       @position = position.rotate_right
+    end
+
+    def move
+      new_position = position.move_forward
+      if @table.position_valid?(new_position)
+        @position = new_position
+      end
     end
 
     def report
