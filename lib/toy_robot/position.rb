@@ -34,7 +34,7 @@ module ToyRobot
     def heading_change(delta)
       index = heading + delta
       index = index % 4 if index >= 4
-      [ NORTH, EAST, SOUTH, WEST ][index]
+      [NORTH, EAST, SOUTH, WEST][index]
     end
   end
 end
