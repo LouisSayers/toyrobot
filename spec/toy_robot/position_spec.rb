@@ -29,4 +29,30 @@ describe ToyRobot::Position do
       include_examples 'rotating left', ToyRobot::Position::WEST, ToyRobot::Position::SOUTH
     end
   end
+
+  describe '#rotate_right' do
+    shared_examples 'rotating right' do |from, to|
+      it 'updates the heading' do
+        position = described_class.new(x, y, from)
+        new_position = position.rotate_right
+        expect(new_position.heading).to eq to
+      end
+    end
+
+    context 'position is NORTH' do
+      include_examples 'rotating right', ToyRobot::Position::NORTH, ToyRobot::Position::EAST
+    end
+
+    context 'position is EAST' do
+      include_examples 'rotating right', ToyRobot::Position::EAST, ToyRobot::Position::SOUTH
+    end
+
+    context 'position is SOUTH' do
+      include_examples 'rotating right', ToyRobot::Position::SOUTH, ToyRobot::Position::WEST
+    end
+
+    context 'position is WEST' do
+      include_examples 'rotating right', ToyRobot::Position::WEST, ToyRobot::Position::NORTH
+    end
+  end
 end

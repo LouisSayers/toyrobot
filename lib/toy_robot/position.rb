@@ -17,10 +17,16 @@ module ToyRobot
       self.class.new(x, y, heading_change(-1))
     end
 
+    def rotate_right
+      self.class.new(x, y, heading_change(1))
+    end
+
     private
 
     def heading_change(delta)
-      [ NORTH, EAST, SOUTH, WEST ][heading + delta]
+      index = heading + delta
+      index = index % 4 if index >= 4
+      [ NORTH, EAST, SOUTH, WEST ][index]
     end
   end
 end

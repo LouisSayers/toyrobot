@@ -9,5 +9,9 @@ module ToyRobot
     def turn_left
       @position = position.rotate_left
     end
+
+    def turn_right
+      @position = position.rotate_right
+    end
   end
 end
