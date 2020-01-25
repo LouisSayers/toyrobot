@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'require_all'
+Bundler.require(:default, :test)
 require_rel '../lib'
 
 RSpec.configure do |config|
@@ -8,6 +8,7 @@ RSpec.configure do |config|
 
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
+  config.expose_dsl_globally = true
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
