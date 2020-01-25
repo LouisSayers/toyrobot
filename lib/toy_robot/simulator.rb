@@ -3,15 +3,16 @@ module ToyRobot
     def self.run
       puts 'Welcome to ToyRobot'
 
-      table = ToyRobot::Table.new(5, 5)
+      table = Table.new(5, 5)
       robot = nil
+      context = Context.new(table, robot)
 
       while input = STDIN.gets.chomp()
-        if robot.nil?
-          robot = process_place_command(table, input)
-        else
-          process_command(input, robot)
-        end
+        command = CommandFactory.command_from(input)
+
+        continue if context.robot.nil? && !command.is_a?(PlaceCommand)
+
+        context = command.execute(context)
       end
     end
 
@@ -24,18 +25,6 @@ module ToyRobot
 
         position = ToyRobot::Position.new(x, y, heading)
         ToyRobot::Robot.new(table, position)
-      else
-        puts "no match"
-        puts "'#{input}'"
-      end
-    end
-
-    def self.process_command(input, robot)
-      case input
-        when /\AMOVE\z/ then robot.move
-        when /\ALEFT\z/ then robot.turn_left
-        when /\ARIGHT\z/ then robot.turn_right
-        when /\AREPORT\z/ then robot.report
       end
     end
   end

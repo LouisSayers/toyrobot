@@ -10,7 +10,7 @@ module ToyRobot
     def initialize(x, y, heading)
       @x = x
       @y = y
-      @heading = heading_from(heading)
+      @heading = heading_from(heading) # TODO: add tests around this
     end
 
     def rotate_left
@@ -42,7 +42,7 @@ module ToyRobot
       converted = nil
       case value
       when String
-        converted = %w(NORTH NORTH EAST SOUTH WEST).index(value.upcase)
+        converted = %w(NORTH EAST SOUTH WEST).index(value.upcase)
       when Integer
         converted = value
       end
