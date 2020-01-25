@@ -1,10 +1,17 @@
 module ToyRobot
   class Table
-    def initialize
+    attr_reader :width, :height
+
+    def initialize(width, height)
+      @width = width
+      @height = height
     end
 
-    def position_valid?(position)
-      #TODO implement me
+    def point_valid?(point)
+      x_within_bounds = (point.x >= 0 && point.x < width)
+      y_within_bounds = (point.y >= 0 && point.y < height)
+
+      x_within_bounds && y_within_bounds
     end
   end
 end

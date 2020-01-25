@@ -17,7 +17,7 @@ module ToyRobot
 
     def move
       new_position = position.move_forward
-      if @table.position_valid?(new_position)
+      if @table.point_valid?(new_position)
         @position = new_position
       end
     end

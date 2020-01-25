@@ -49,7 +49,7 @@ describe ToyRobot::Robot do
 
     before do
       allow(position).to receive(:move_forward).and_return(new_position)
-      allow(table).to receive(:position_valid?).with(new_position).and_return(position_valid)
+      allow(table).to receive(:point_valid?).with(new_position).and_return(position_valid)
     end
 
     context 'new position is on the table' do
