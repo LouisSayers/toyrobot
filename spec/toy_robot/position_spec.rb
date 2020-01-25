@@ -55,4 +55,30 @@ describe ToyRobot::Position do
       include_examples 'rotating right', ToyRobot::Position::WEST, ToyRobot::Position::NORTH
     end
   end
+
+  describe '#to_s' do
+    shared_examples 'reports correct location' do |heading, heading_str|
+      it 'has correct position info' do
+        position = described_class.new(x, y, heading)
+        result = position.to_s
+        expect(result).to eq "#{x},#{y},#{heading_str}"
+      end
+    end
+
+    context 'facing NORTH' do
+      include_examples 'reports correct location', described_class::NORTH, 'NORTH'
+    end
+
+    context 'facing EAST' do
+      include_examples 'reports correct location', described_class::EAST, 'EAST'
+    end
+
+    context 'facing SOUTH' do
+      include_examples 'reports correct location', described_class::SOUTH, 'SOUTH'
+    end
+
+    context 'facing WEST' do
+      include_examples 'reports correct location', described_class::WEST, 'WEST'
+    end
+  end
 end

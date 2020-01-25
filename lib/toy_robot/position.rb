@@ -21,7 +21,15 @@ module ToyRobot
       self.class.new(x, y, heading_change(1))
     end
 
+    def to_s
+      [x, y, heading_name].join(',')
+    end
+
     private
+
+    def heading_name
+      %w(NORTH EAST SOUTH WEST)[heading]
+    end
 
     def heading_change(delta)
       index = heading + delta

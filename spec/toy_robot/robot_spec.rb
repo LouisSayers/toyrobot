@@ -27,4 +27,17 @@ describe ToyRobot::Robot do
       expect(robot.position).to eq new_position
     end
   end
+
+  describe '#report' do
+    let(:position_str) { double }
+
+    subject { robot.report() }
+
+    it 'prints the Robots position' do
+      allow(position).to receive(:to_s).and_return(position_str)
+      allow(ToyRobot::Logger).to receive(:log)
+      subject
+      expect(ToyRobot::Logger).to have_received(:log).with(position_str)
+    end
+  end
 end

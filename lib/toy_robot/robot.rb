@@ -13,5 +13,9 @@ module ToyRobot
     def turn_right
       @position = position.rotate_right
     end
+
+    def report
+      Logger.log(@position.to_s)
+    end
   end
 end
