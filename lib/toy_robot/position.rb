@@ -10,7 +10,7 @@ module ToyRobot
     def initialize(x, y, heading)
       @x = x
       @y = y
-      @heading = heading_from(heading) # TODO: add tests around this
+      @heading = heading
     end
 
     def rotate_left
@@ -37,17 +37,6 @@ module ToyRobot
     end
 
     private
-
-    def heading_from(value)
-      converted = nil
-      case value
-      when String
-        converted = %w(NORTH EAST SOUTH WEST).index(value.upcase)
-      when Integer
-        converted = value
-      end
-      converted
-    end
 
     def heading_name
       %w(NORTH EAST SOUTH WEST)[heading]

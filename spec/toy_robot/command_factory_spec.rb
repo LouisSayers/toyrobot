@@ -5,9 +5,15 @@ describe ToyRobot::CommandFactory do
     subject { described_class.command_from(input) }
 
     context 'PLACE command' do
-      let(:input) { 'PLACE 0,0,NORTH' }
+      let(:input) { 'PLACE 0,1,NORTH' }
+      let(:heading) { double }
+      let(:command) { double(ToyRobot::PlaceCommand) }
 
-      #TODO: create specs
+      it 'creates a place command' do
+        allow(ToyRobot::Heading).to receive(:heading_from).with('NORTH').and_return(heading)
+        allow(ToyRobot::PlaceCommand).to receive(:new).with(0,1,heading).and_return(command)
+        expect(subject).to eq command
+      end
     end
 
     context 'MOVE command' do
