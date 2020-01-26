@@ -1,7 +1,7 @@
 module ToyRobot
   class UnknownCommand
     def execute(context)
-      Logger.log('Error: Unknown command')
+      Logger.error('Unknown command')
       context
     end
   end

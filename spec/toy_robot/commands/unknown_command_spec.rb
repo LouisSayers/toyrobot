@@ -11,7 +11,7 @@ describe ToyRobot::UnknownCommand do
     it 'logs a message' do
       allow(ToyRobot::Logger).to receive(:error)
       subject
-      expect(ToyRobot::Logger).to have_received(:error).with('Error: Unknown command')
+      expect(ToyRobot::Logger).to have_received(:error).with('Unknown command')
     end
   end
 end

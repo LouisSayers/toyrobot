@@ -1,7 +1,7 @@
 module ToyRobot
   class Simulator
     def self.run
-      puts 'Welcome to ToyRobot'
+      Logger.log('Welcome to ToyRobot')
 
       table = Table.new(5, 5)
       robot = nil

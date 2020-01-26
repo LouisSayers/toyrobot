@@ -12,3 +12,6 @@
 
 # Remove IDE files
 /.idea/
+
+# Remove byebug files
+.byebug_history
