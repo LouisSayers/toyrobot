@@ -3,11 +3,13 @@ module ToyRobot
     def initialize(x, y, heading)
       @x = x
       @y = y
-      @heding = heading
+      @heading = heading
     end
 
     def execute(context)
-      context
+      position = Position.new(@x, @y, @heading)
+      robot = Robot.new(context.table, position)
+      context.duplicate(robot: robot)
     end
   end
 end
