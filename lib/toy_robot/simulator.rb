@@ -10,7 +10,10 @@ module ToyRobot
       while input = STDIN.gets&.chomp()
         command = CommandFactory.command_from(input)
 
-        next if context.robot.nil? && !command.is_a?(PlaceCommand)
+        if context.robot.nil? && !command.is_a?(PlaceCommand)
+          Logger.error('You must place the robot first')
+          next
+        end
 
         context = command.execute(context)
       end

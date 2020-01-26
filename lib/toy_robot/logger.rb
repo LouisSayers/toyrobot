@@ -1,7 +1,13 @@
 module ToyRobot
   class Logger
-    def self.log(msg)
-      puts msg
+    class << self
+      def log(msg)
+        puts msg
+      end
+
+      def error(msg)
+        log("Error: #{msg}")
+      end
     end
   end
 end
