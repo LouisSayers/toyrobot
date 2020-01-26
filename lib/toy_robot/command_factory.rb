@@ -18,7 +18,7 @@ module ToyRobot
         args = matches.named_captures
         x = Integer(args['x'])
         y = Integer(args['y'])
-        heading = Heading.heading_from(args['heading'])
+        heading = Heading.from(args['heading'])
 
         PlaceCommand.new(x, y, heading)
       end

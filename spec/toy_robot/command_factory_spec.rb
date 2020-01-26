@@ -10,7 +10,7 @@ describe ToyRobot::CommandFactory do
       let(:command) { double(ToyRobot::PlaceCommand) }
 
       it 'creates a place command' do
-        allow(ToyRobot::Heading).to receive(:heading_from).with('NORTH').and_return(heading)
+        allow(ToyRobot::Heading).to receive(:from).with('NORTH').and_return(heading)
         allow(ToyRobot::PlaceCommand).to receive(:new).with(0,1,heading).and_return(command)
         expect(subject).to eq command
       end

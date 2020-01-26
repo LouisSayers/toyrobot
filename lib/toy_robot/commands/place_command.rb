@@ -8,8 +8,14 @@ module ToyRobot
 
     def execute(context)
       position = Position.new(@x, @y, @heading)
-      robot = Robot.new(context.table, position)
-      context.duplicate(robot: robot)
+
+      if context.table.point_valid?(position)
+        robot = Robot.new(context.table, position)
+        context.duplicate(robot: robot)
+      else
+        Logger.log('Invalid Position: Could not place Robot')
+        context
+      end
     end
   end
 end
